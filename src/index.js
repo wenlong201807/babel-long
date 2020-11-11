@@ -11,7 +11,8 @@ let source = `var fn = function() {
   console.log(111)
 }`;
 
-module.exports = function (source) {
+const ASTFn = function (source) {
+  // module.exports = function (source) { // 制作成一个npm 包
 
 
   // 1、解析
@@ -66,3 +67,14 @@ module.exports = function (source) {
   }).code;
 
 }
+
+let newFn = ASTFn(source)
+console.log('newFn:', newFn)
+
+// newFn: var fn = function () {
+//   try {
+//     console.log(111);
+//   } catch (error) {
+//     ErrorCapture(error);
+//   }
+// };
